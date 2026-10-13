@@ -7,7 +7,7 @@ export const AUTHOR_AVATAR_URL = "/author.jpg";
 export const X_URL = "https://x.com/leozinr01";
 export const INSTAGRAM_URL = "https://instagram.com/leozinr01";
 /** Discord profiles are linked by numeric user id, not by username. */
-export const DISCORD_URL = "https://discord.com/users/leozinr01";
+export const DISCORD_URL = "https://discord.com/users/652682096652976169";
 
 /** Where the site's GitHub link (footer) points. */
 export const GITHUB_URL = "https://github.com/leozinr01";
