@@ -1,8 +1,64 @@
+<div align="center">
+
+<a href="https://gitcalendar.vercel.app/"><img src="api/app/assets/preview.png" alt="Git Calendar" height=100% width=auto></a>
+
+[![GitHub Stars](https://img.shields.io/github/stars/leozinr01/gitcalendar.svg?style=flat&logo=github)](https://github.com/leozinr01/gitcalendar/stargazers)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fgitcalendar.vercel.app&style=flat&logo=vercel&label=website)](https://gitcalendar.vercel.app/)
+[![Twitter Follow](https://img.shields.io/twitter/follow/leozinr01?style=social)](https://x.com/leozinr01)
+
+</div>
+
 # Git Calendar
 
-Turn your yearly GitHub contribution graph into a phone wallpaper that updates itself every day.
+Turns a GitHub username into a **yearly commit wallpaper** for your phone, one commit dot per day of the year, colored by that day's GitHub contribution intensity. The wallpaper updates itself every day.
 
-- [`api/`](api) — the backend that renders the wallpaper image (Python, FastAPI).
-- [`front/`](front) — the website (Next.js).
+## Project structure
+
+| Folder | Description |
+|---|---|
+| [`api/`](api) | Backend that renders the wallpaper image (Python, FastAPI) |
+| [`front/`](front) | Website to generate your wallpaper (Next.js) |
 
 Each folder has its own README and deploys as its own project.
+
+## Endpoints
+
+### `GET /graph`
+
+Renders the wallpaper image. `username` is the only required param, everything else, including it, is passed as a query param:
+
+| Param | Default | Description |
+|---|---|---|
+| `username` | _(required)_ | GitHub username to render |
+| `height` | `2556` | Output height in px. Any value from `64` to `4000`. |
+| `width` | `1179` | Output width in px. Any value from `64` to `4000`. |
+| `shape` | `rounded` | Shape of the commit: `rounded` (rounded-corner squares, like GitHub), `square` (sharp corners), or `circle`. |
+| `background` | `github` | Named background preset: `github` (`#0d1117`), `dark` (`#1a1a1a`), or `light` (`#ffffff`). |
+| `color` | _(none)_ | Named theme for commit levels 1-4: `green`, `blue`, `purple`, `red`, `yellow`, `orange`, `pink`, `white`, `black` |
+| `language` | `en` | Footer language: `en` ("this year") or `pt` ("este ano"). |
+
+Example:
+
+```
+GET https://gitcalendar-image.vercel.app/graph?username=leozinr01
+```
+
+Example with all params:
+```
+GET https://gitcalendar-image.vercel.app/graph?username=leozinr01&background=dark&color=green&shape=rounded&language=en&height=2556&width=1179
+```
+
+Image example:
+
+<img src="https://gitcalendar-image.vercel.app/graph?username=leozinr01&background=dark&color=green&shape=rounded&language=en&height=2556&width=1179" alt="Git Calendar" height=400px>
+
+#### Resolutions
+
+[RESOLUTIONS.md](api/RESOLUTIONS.md) lists every resolution already mapped for the API, iPhone and Android, with the exact `height` and `width` to use for each device. Any other size from `64` to `4000` px per side works too.
+
+#### Credits
+
+Based on [Git Calendar](https://github.com/leozinr01/gitcalendar) by [Matheus Audibert](https://github.com/leozinr01), under the MIT License.
+
+#### Support
+If you're using this repo, feel free to show support and give this repo a ⭐ star! It means a lot, thank you :)
