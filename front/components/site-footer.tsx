@@ -3,8 +3,8 @@ import { SocialLinks } from "@/components/social-links";
 import { ThemeToggle } from "@/components/theme-toggle";
 import type { Dictionary, Locale } from "@/lib/i18n";
 
-const SITE_NAME = "thegitcalendar";
-const SITE_TLD = ".com";
+const SITE_NAME = "gitcalendar";
+const SITE_TLD = ".vercel.app";
 
 export function SiteFooter({ t, locale }: { t: Dictionary; locale: Locale }) {
   return (

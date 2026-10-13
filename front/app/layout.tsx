@@ -34,7 +34,7 @@ const siteUrl =
  * What the tab and the address bar call this site. A domain, so unlike the
  * dictionary copy it reads the same in every locale and stays out of `i18n.ts`.
  */
-const SITE_NAME = "thegitcalendar.com";
+const SITE_NAME = "gitcalendar.vercel.app";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();

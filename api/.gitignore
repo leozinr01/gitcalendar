@@ -15,3 +15,5 @@ iphone_audit/
 
 # prints de teste
 image*.png
+.vercel
+.env*
