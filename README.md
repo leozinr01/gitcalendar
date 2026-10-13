@@ -58,7 +58,7 @@ Image example:
 
 #### Credits
 
-Based on [Git Calendar](https://github.com/leozinr01/gitcalendar) by [Matheus Audibert](https://github.com/leozinr01), under the MIT License.
+Based on [Git Calendar](https://github.com/leozinr01/gitcalendar) by [Leonardo Ribeiro](https://x.com/leozinr01), under the MIT License.
 
 #### Support
 If you're using this repo, feel free to show support and give this repo a ⭐ star! It means a lot, thank you :)
