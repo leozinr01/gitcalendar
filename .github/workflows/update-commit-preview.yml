@@ -1,0 +1,62 @@
+name: Update commit preview image
+
+# Regenerates front/public/commit-preview.png (dark background) and
+# front/public/commit-preview-light.png (light) from the contribution-graph API and
+# commits them to the repo. The hero mockup then serves the one matching the
+# visitor's theme as a static asset instead of hitting the API on every page
+# load, which used to show up as a visible delay before the wallpaper appeared.
+#
+# Keep this in sync with front/lib/showcase-users.ts (SHOWCASE_USER / WIDTH / HEIGHT
+# / WALLPAPER_URLS).
+
+on:
+  schedule:
+    - cron: "0 9 * * *" # daily at 06:00 America/Sao_Paulo (UTC-3, no DST) = 09:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  update-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download commit preview images
+        env:
+          USERNAME: leozinr01
+          WIDTH: "1290"
+          HEIGHT: "2796"
+        run: |
+          set -euo pipefail
+          download() {
+            url="https://gitcalendar-image.vercel.app/graph?username=${USERNAME}&background=$1&color=green&shape=rounded&width=${WIDTH}&height=${HEIGHT}"
+            curl --fail --silent --show-error --location \
+              --retry 3 --retry-delay 5 \
+              --output "$2" \
+              "$url"
+            file "$2" | grep -qi 'PNG image data'
+          }
+          download dark front/public/commit-preview.png
+          download light front/public/commit-preview-light.png
+
+      - name: Commit and push if changed
+        run: |
+          set -euo pipefail
+          files="front/public/commit-preview.png front/public/commit-preview-light.png"
+          # `status` rather than `diff`, so a file that is new still counts.
+          if [ -z "$(git status --porcelain -- $files)" ]; then
+            echo "No changes to the commit preview images"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add $files
+          git commit -m "chore: update commit preview images"
+          git push
