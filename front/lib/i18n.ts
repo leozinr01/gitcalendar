@@ -115,7 +115,7 @@ export const dictionaries = {
         id: "how",
         question: "How does this project work?",
         answer:
-          "The project is built on an [**API**](https://github.com/leozinr01/thegitcalendar) that generates an image sized for your phone's screen, showing your GitHub contribution graph. An automation on your phone sends a `GET` request to that API every day and sets the image it returns as your wallpaper. On iPhone, this runs natively through the [Shortcuts](https://apps.apple.com/app/id915249334) app's automations. Android has no built-in equivalent, so the automation is created with the [**MacroDroid**](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid) app.",
+          "The project is built on an [**API**](https://github.com/leozinr01/gitcalendar) that generates an image sized for your phone's screen, showing your GitHub contribution graph. An automation on your phone sends a `GET` request to that API every day and sets the image it returns as your wallpaper. On iPhone, this runs natively through the [Shortcuts](https://apps.apple.com/app/id915249334) app's automations. Android has no built-in equivalent, so the automation is created with the [**MacroDroid**](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid) app.",
       },
       {
         id: "login",
