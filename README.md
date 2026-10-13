@@ -1,4 +1,4 @@
-# The Git Calendar
+# Git Calendar
 
 Turn your yearly GitHub contribution graph into a phone wallpaper that updates itself every day.
 
