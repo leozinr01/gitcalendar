@@ -3,15 +3,10 @@ import { FaqSection } from "@/components/faq-section";
 import { Hero } from "@/components/hero";
 import { HowItWorksSection } from "@/components/how-it-works-section";
 import { SiteFooter } from "@/components/site-footer";
-import { VisitsSection } from "@/components/visits-section";
 import { getDictionary } from "@/lib/locale";
-import { getVisits } from "@/lib/visits";
 
 export default async function Home() {
-  const [{ locale, t }, visits] = await Promise.all([
-    getDictionary(),
-    getVisits(),
-  ]);
+  const { locale, t } = await getDictionary();
 
   return (
     <main className="flex flex-1 flex-col">
@@ -23,11 +18,6 @@ export default async function Home() {
       <div className="flex flex-col gap-20 pt-2 pb-24 md:gap-24 md:pt-4 md:pb-32">
         <AboutSection t={t} />
         <HowItWorksSection t={t} />
-        <VisitsSection
-          label={t.visitsLabel}
-          locale={locale}
-          initialVisits={visits}
-        />
         <FaqSection t={t} />
       </div>
 

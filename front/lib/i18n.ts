@@ -98,7 +98,6 @@ export const dictionaries = {
       },
     },
     aboutTitle: "About the project",
-    visitsLabel: "Visits",
     notFoundTitle: "Page not found",
     notFoundDescription:
       "The page you're looking for doesn't exist or has moved.",
@@ -282,7 +281,6 @@ export const dictionaries = {
       },
     },
     aboutTitle: "Sobre o projeto",
-    visitsLabel: "Visitas",
     notFoundTitle: "Página não encontrada",
     notFoundDescription:
       "A página que você procura não existe ou foi movida.",
